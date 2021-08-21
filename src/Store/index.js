@@ -18,8 +18,8 @@ export const Provider = (props) => {
   const contextValue = useMemo(() => {
     return {
       state,
-      ...bindActionToDispatch(postsActions, dispatch),
-      ...bindActionToDispatch(commentsActions, dispatch),
+      ...bindDispatchToAction(postsActions, dispatch),
+      ...bindDispatchToAction(commentsActions, dispatch),
     }
   }, [state, dispatch])
 
@@ -30,7 +30,7 @@ export const Provider = (props) => {
   )
 }
 
-export const bindActionToDispatch = (actions, dispatch) => {
+export const bindDispatchToAction = (actions, dispatch) => {
   return Object.keys(actions).reduce((acc, currFn) => {
     acc[currFn] = (...args) => actions[currFn](...args)(dispatch)
 
