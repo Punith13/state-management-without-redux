@@ -1,9 +1,8 @@
-import { useContext, useEffect } from 'react'
-
-import { Store } from '../Store'
+import { useEffect } from 'react'
+import useContextWithStore from './hooks/useContextWithStore'
 
 const Comments = ({ postId }) => {
-  const { state, getComments } = useContext(Store)
+  const { state, getComments } = useContextWithStore()
 
   const { comments, commentsLoading } = state?.commentsState
   const { currentPostId } = state?.postsState
